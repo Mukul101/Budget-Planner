@@ -8,6 +8,8 @@ import { ExpenseComponent } from './expense/expense.component';
 import { TodoComponent } from './todo/todo.component';
 import { HistoryComponent } from './history/history.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -21,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), HttpClientModule],
   exports: [RouterModule]
 })
 export class BudgetPlannerRoutingModule { }

@@ -13,8 +13,9 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent {
   //Income
-  lastMonthsIncome = ['January: $1000', 'February: $1500', 'March: $1200'];
+  lastMonthsIncome:Array<any>= ['January: $1000', 'February: $1500', 'March: $1200'];
   currentMonthIncome = '$2000';
+
 
   //Expense
   lastMonthsExpense = ['January: $800', 'February: $1000', 'March: $1200'];
