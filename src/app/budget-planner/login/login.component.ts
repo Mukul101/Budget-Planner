@@ -46,33 +46,37 @@ toggleForm(form: 'login' | 'register') {
 
 login() {
   if (this.loginForm.valid) {
-    this.authService.login(this.loginForm.email.value,this.loginForm.password.value)
+    this.authService.login(this.loginForm.value.email,this.loginForm.value.password)
     .subscribe({
       next: (response:LoginResponse) => {
         this.authService.setToken(response.token)
+        this.router.navigate(['/budget-planner/dashboard']);
       },
       error: (err) => {
-
+        this.snackBar.open(err.error.message, 'Close', { duration: 3000 });
 
       }
     })
     console.log("Login info==>", this.loginForm.value);
-    this.router.navigate(['/budget-planner/dashboard']);
   } else {
     this.snackBar.open('Invalid email or password!', 'Close', { duration: 3000 });
   }
 }
 register() {
   if (this.registerForm.valid) {
-    console.log("Register info==>>", this.registerForm.value);
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
-    this.router.navigate(['/budget-planner/login']);
+    this.authService.register(this.registerForm.value.username,this.registerForm.value.email,this.registerForm.value.password)
+    .subscribe({
+      next: (response:any) => {
+        this.authService.setToken(response.token)
+        this.router.navigate(['/budget-planner/login']);
+      },
+      error: (err) => {
+        this.snackBar.open(err.error.message, 'Close', { duration: 3000 });
+
+      }})
   } else {
     this.snackBar.open('Please fill in all fields correctly!', 'Close', { duration: 3000 });
   }
+
 }
-
-
 }

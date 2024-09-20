@@ -23,6 +23,11 @@ export class AuthService {
    return this.http.post<LoginResponse>(AppConfig.baseApiUrl + "/login" , {email,password} )
   }
 
+  register(username:string,email:string,password:string) : Observable<any>
+  {
+    return this.http.post<any>(AppConfig.baseApiUrl + "/register" , {username,email,password} )
+  }
+
   setToken(token:string) {
     sessionStorage.setItem("token",token);
   }

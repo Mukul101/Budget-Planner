@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BudgetPlannerRoutingModule } from './budget-planner-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -11,7 +12,10 @@ import { LoginComponent } from './login/login.component';
   imports: [
     HttpClientModule,
     CommonModule,
-    BudgetPlannerRoutingModule,
+    BudgetPlannerRoutingModule
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class BudgetPlannerModule { }
